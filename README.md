@@ -10,7 +10,7 @@ This demo includes demonstration on using .NET 6/7 with ...
 
 ### EF Core
 #### Database
-Since MS SQL Server requires `$$$$`, I have opted for [PostgreSQL]("https://www.postgresql.org/") in this demo instead. Use [Postgres App]("https://postgresapp.com/") for hassle-free installation, setup and execution of PostgreSQL. To access the database's content, either use the `database` tool bundled in [Rider]("https://www.jetbrains.com/rider/"), [DataGrip]("https://www.jetbrains.com/datagrip/") or [PgAdmin]("https://www.pgadmin.org/"). [Default username and password for database is admin]("https://stackoverflow.com/a/69649419/7761918") and the port is `5432`. Change the connection string with your username and password in `appsettings.json` / `appsettings.Development.json`   
+Since MS SQL Server requires `$$$$`, I have opted for [PostgreSQL](https://www.postgresql.org/) in this demo instead. Use [Postgres App](https://postgresapp.com/) for hassle-free installation, setup and execution of PostgreSQL. To access the database's content, either use the `database` tool bundled in [Rider](https://www.jetbrains.com/rider/), [DataGrip](https://www.jetbrains.com/datagrip/) or [PgAdmin](https://www.pgadmin.org/). [Default username and password for database is admin](https://stackoverflow.com/a/69649419/7761918) and the port is `5432`. Change the connection string with your username and password in `appsettings.json` / `appsettings.Development.json`   
 
 #### Setup
 Apply update to database  
