@@ -25,15 +25,15 @@ public class MainService : IMainService
     {
         if (roleId == null)
         {
-            return await _applicationDbContext.Staffs.ToListAsync();
+            return await _applicationDbContext.Staffs.Include(x=>x.StaffRole).ToListAsync();
         }
 
-        return await _applicationDbContext.Staffs.Where(x => x.StaffRole.RoleId == roleId.Value).ToListAsync();
+        return await _applicationDbContext.Staffs.Where(x => x.StaffRole.RoleId == roleId.Value).Include(x=>x.StaffRole).ToListAsync();
     }
 
     public async Task<Staff?> GetStaff(int staffId)
     {
-        return await _applicationDbContext.Staffs.FirstOrDefaultAsync(x => x.StaffId == staffId);
+        return await _applicationDbContext.Staffs.Where(x => x.StaffId == staffId).Include(x=>x.StaffRole).FirstOrDefaultAsync();
     }
     
     public async Task CreateStaff(Staff staff)
