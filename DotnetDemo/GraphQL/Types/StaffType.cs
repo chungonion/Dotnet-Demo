@@ -27,9 +27,13 @@ public class StaffType : ObjectType<Staff>
             CancellationToken cancellationToken
         )
         {
-            int[] staffIds = await dbContext.Staffs.Where(x => x.StaffId == staff.StaffId).Select(x => x.StaffId)
-                .ToArrayAsync();
-            return await dataLoader.LoadAsync(staffIds, cancellationToken);
+            int[] staffRoleIds = await
+                dbContext.StaffRoles
+                    .Where(x => x.RoleId == staff.RoleId)
+                    .Select(x => x.RoleId)
+                    .ToArrayAsync(cancellationToken: cancellationToken);
+            return await dataLoader.LoadAsync(staffRoleIds, cancellationToken);
         }
+        
     }
 }
