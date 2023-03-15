@@ -21,4 +21,5 @@ public class StaffRole
     [Key]
     public int RoleId { get; set; }
     public string RoleName { get; set; }
+    public ICollection<Staff>? Staffs { get; set; }
 }

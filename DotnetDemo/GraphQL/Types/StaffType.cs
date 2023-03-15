@@ -14,25 +14,20 @@ public class StaffType : ObjectType<Staff>
             .ResolveNode((ctx, id) => ctx.DataLoader<StaffDataLoader>().LoadAsync(id, ctx.RequestAborted));
 
         descriptor.Field(x => x.StaffRole)
-            .ResolveWith<StaffResolver>(x => x.GetStaffRoles(default!, default!, default!, default))
+            .ResolveWith<StaffResolver>(x => x.GetStaffRole(default!, default!, default!, default))
             .UseDbContext<ApplicationDbContext>();
     }
 
     private class StaffResolver
     {
-        public async Task<IEnumerable<StaffRole>> GetStaffRoles(
+        public async Task<StaffRole> GetStaffRole(
             [Parent] Staff staff,
             ApplicationDbContext dbContext,
             StaffRoleDataLoader dataLoader,
             CancellationToken cancellationToken
         )
         {
-            int[] staffRoleIds = await
-                dbContext.StaffRoles
-                    .Where(x => x.RoleId == staff.RoleId)
-                    .Select(x => x.RoleId)
-                    .ToArrayAsync(cancellationToken: cancellationToken);
-            return await dataLoader.LoadAsync(staffRoleIds, cancellationToken);
+            return await dataLoader.LoadAsync(staff.RoleId, cancellationToken);
         }
         
     }
